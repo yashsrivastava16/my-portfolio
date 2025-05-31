@@ -4,6 +4,7 @@ import {
   Mail,
   Phone,
   Linkedin,
+  Github,
   ExternalLink,
   Menu,
   X,
@@ -15,16 +16,20 @@ import {
   GraduationCap,
 } from "lucide-react";
 
-// Navigation Component
+// Client Components
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
+    // Set initial scroll position
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -39,7 +44,7 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
+        isMounted && isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-lg"
           : "bg-white/80 backdrop-blur-md"
       }`}
@@ -94,8 +99,44 @@ const Navigation = () => {
   );
 };
 
-// Hero Section Component
+// Client Component for smooth scrolling
+const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const href = target.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+    };
+
+    if (isMounted) {
+      document.addEventListener("click", handleClick);
+      return () => document.removeEventListener("click", handleClick);
+    }
+  }, [isMounted]);
+
+  return <>{children}</>;
+};
+
+// Static Components (can be server components)
 const HeroSection = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section
       id="home"
@@ -103,8 +144,16 @@ const HeroSection = () => {
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div
+          className={`absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl ${
+            isMounted ? "animate-pulse" : ""
+          }`}
+        ></div>
+        <div
+          className={`absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-300 rounded-full blur-3xl ${
+            isMounted ? "animate-pulse delay-1000" : ""
+          }`}
+        ></div>
       </div>
 
       <div className="text-center text-white z-10 px-4 max-w-4xl mx-auto">
@@ -146,16 +195,23 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 ${
+          isMounted ? "animate-bounce" : ""
+        }`}
+      >
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+          <div
+            className={`w-1 h-3 bg-white rounded-full mt-2 ${
+              isMounted ? "animate-pulse" : ""
+            }`}
+          ></div>
         </div>
       </div>
     </section>
   );
 };
 
-// About Section Component
 const AboutSection = () => {
   const stats = [
     { value: "3+", label: "Years Frontend Experience" },
@@ -174,6 +230,11 @@ const AboutSection = () => {
       icon: Linkedin,
       href: "https://www.linkedin.com/in/yash-srivastava-8634181a0/",
       color: "text-blue-600",
+    },
+    {
+      icon: Github,
+      href: "https://github.com/yashsrivastava16",
+      color: "text-gray-800",
     },
     { icon: Phone, href: "tel:+919026482050", color: "text-green-500" },
   ];
@@ -253,7 +314,6 @@ const AboutSection = () => {
   );
 };
 
-// Skills Section Component
 const SkillsSection = () => {
   const skillCategories = [
     {
@@ -319,7 +379,6 @@ const SkillsSection = () => {
   );
 };
 
-// Experience Section Component
 const ExperienceSection = () => {
   const experiences = [
     {
@@ -400,7 +459,6 @@ const ExperienceSection = () => {
   );
 };
 
-// Projects Section Component
 const ProjectsSection = () => {
   const projects = [
     {
@@ -508,7 +566,6 @@ const ProjectsSection = () => {
   );
 };
 
-// Education Section Component
 const EducationSection = () => {
   const education = [
     {
@@ -556,7 +613,6 @@ const EducationSection = () => {
   );
 };
 
-// Contact Section Component
 const ContactSection = () => {
   const contactInfo = [
     {
@@ -576,6 +632,12 @@ const ContactSection = () => {
       title: "LinkedIn",
       info: "Connect with me",
       href: "https://www.linkedin.com/in/yash-srivastava-8634181a0/",
+    },
+    {
+      icon: Github,
+      title: "GitHub",
+      info: "Check my code",
+      href: "https://github.com/yashsrivastava16",
     },
   ];
 
@@ -599,7 +661,7 @@ const ContactSection = () => {
           next project.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
           {contactInfo.map((contact, index) => {
             const IconComponent = contact.icon;
             return (
@@ -624,7 +686,6 @@ const ContactSection = () => {
   );
 };
 
-// Footer Component
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -647,39 +708,20 @@ const Footer = () => {
 
 // Main App Component
 const App = () => {
-  useEffect(() => {
-    // Smooth scrolling for navigation links
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const href = target.getAttribute("href");
-      if (href && href.startsWith("#")) {
-        e.preventDefault();
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <EducationSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <div className="min-h-screen bg-gray-50">
+        <Navigation />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <EducationSection />
+        <ContactSection />
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 
