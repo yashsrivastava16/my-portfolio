@@ -4,7 +4,6 @@ import {
   Mail,
   Phone,
   Linkedin,
-  Github,
   ExternalLink,
   Menu,
   X,
@@ -14,7 +13,6 @@ import {
   Brain,
   CheckCircle,
   GraduationCap,
-  MapPin,
 } from "lucide-react";
 
 // Navigation Component
@@ -112,7 +110,7 @@ const HeroSection = () => {
       <div className="text-center text-white z-10 px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Hi, I'm{" "}
+            Hi, I&apos;m{" "}
             <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
               Yash Srivastava
             </span>
@@ -594,11 +592,11 @@ const ContactSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white z-10 relative">
         <h2 className="text-4xl md:text-5xl font-bold mb-8">
-          Let's Work Together
+          Let&apos;s Work Together
         </h2>
         <p className="text-xl mb-12 opacity-90 max-w-2xl mx-auto">
-          Ready to bring your ideas to life? Let's connect and discuss your next
-          project.
+          Ready to bring your ideas to life? Let&apos;s connect and discuss your
+          next project.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -651,13 +649,14 @@ const Footer = () => {
 const App = () => {
   useEffect(() => {
     // Smooth scrolling for navigation links
-    const handleClick = (e) => {
-      const href = e.target.getAttribute("href");
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const href = target.getAttribute("href");
       if (href && href.startsWith("#")) {
         e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          targetElement.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
