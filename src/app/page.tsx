@@ -335,9 +335,9 @@ const SkillsSection = () => {
       color: "from-purple-500 to-purple-600",
     },
     {
-      title: "Performance",
+      title: "AI & ML",
       icon: Brain,
-      skills: "Web Vitals, Lighthouse, Chrome DevTools, Accessibility",
+      skills: "RAG, LangChain, OpenAI, Google Generative AI",
       color: "from-pink-500 to-pink-600",
     },
   ];
@@ -382,7 +382,7 @@ const SkillsSection = () => {
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: "Frontend Developer",
+      title: "DC Associate Engineer",
       company: "Deloitte Consulting India",
       period: "Jun 2024 - Present",
       color: "from-blue-500 to-purple-600",
@@ -394,7 +394,7 @@ const ExperienceSection = () => {
       ],
     },
     {
-      title: "Frontend Developer",
+      title: "DC Associate Analyst",
       company: "Deloitte Consulting India",
       period: "Jan 2022 - May 2024",
       color: "from-purple-500 to-pink-600",
@@ -474,7 +474,7 @@ const ProjectsSection = () => {
         "Personal Project",
       ],
       color: "from-pink-400 to-rose-600",
-      url: "https://jardinsecret.vercel.app",
+      url: "https://www.jardins-secret.com/",
     },
     {
       title: "OperateEdge",
