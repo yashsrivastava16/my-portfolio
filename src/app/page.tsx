@@ -180,7 +180,7 @@ const HeroSection = () => {
               </span>
             </a>
             <a
-              href="https://drive.google.com/file/d/1KAirdolsPEG330J6JckctXH1Q08q7CzT/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1SvwYHPc3Iu-MWWyx3WSxL-OKJmEAX7WU/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
