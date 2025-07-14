@@ -477,6 +477,20 @@ const ProjectsSection = () => {
       url: "https://www.jardins-secret.com/",
     },
     {
+      title: "Dr. Riya Srivastava Portfolio",
+      description:
+        "Developed a personal portfolio website for Dr. Riya Srivastava to showcase her professional work, achievements, and publications. The website features an appointment booking system, allowing users to easily schedule consultations online.",
+      icon: "🩺",
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "Appointment Booking",
+        "Portfolio Website",
+      ],
+      color: "from-teal-400 to-blue-600",
+      url: "https://healthcare-eight-bice.vercel.app/",
+    },
+    {
       title: "OperateEdge",
       description:
         "Developed key modules for Deloitte's central CTO operations platform, enabling business transformation through intelligent resource allocation and training management. Implemented real-time analytics dashboards and automated workflow systems to optimize operational efficiency across global teams.",
