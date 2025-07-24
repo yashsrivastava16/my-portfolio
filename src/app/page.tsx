@@ -166,7 +166,8 @@ const HeroSection = () => {
           </h1>
           <p className="text-lg mb-12 opacity-75 max-w-2xl mx-auto">
             Passionate about building performant, scalable, and accessible web
-            applications with modern frontend technologies
+            applications with modern frontend technologies. Currently exploring
+            the exciting world of Generative AI and Machine Learning.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -216,7 +217,7 @@ const AboutSection = () => {
   const stats = [
     { value: "3+", label: "Years Frontend Experience" },
     { value: "50+", label: "UI Components Built" },
-    { value: "4+", label: "Owened Module" },
+    { value: "4+", label: "Owned Modules" },
     { value: "10+", label: "Developers Mentored" },
   ];
 
@@ -249,8 +250,8 @@ const AboutSection = () => {
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Passionate Frontend Developer with expertise in modern UI frameworks
             and a strong focus on creating exceptional user experiences.
-            Specializing in building performant, accessible, and visually
-            appealing web applications.
+            Currently diving into Generative AI and Machine Learning to expand
+            my skill set and explore innovative solutions.
           </p>
         </div>
 
@@ -274,7 +275,8 @@ const AboutSection = () => {
               experience in UI/UX optimization and implementing innovative
               frontend solutions, I&apos;ve contributed to improving application
               performance by 40% and enhancing team productivity through
-              effective mentoring.
+              effective mentoring. Now, I am channeling my expertise into
+              exploring the potential of AI-driven applications.
             </p>
 
             <div className="grid grid-cols-2 gap-4 mb-8">
@@ -331,13 +333,14 @@ const SkillsSection = () => {
     {
       title: "Frontend Tools",
       icon: Cog,
-      skills: "Webpack, Syncfusion , Git",
+      skills: "Webpack, Syncfusion, Git",
       color: "from-purple-500 to-purple-600",
     },
     {
       title: "AI & ML",
       icon: Brain,
-      skills: "RAG, LangChain, OpenAI, Google Generative AI",
+      skills:
+        "RAG, LangChain, OpenAI, Google Generative AI, TensorFlow, PyTorch",
       color: "from-pink-500 to-pink-600",
     },
   ];
